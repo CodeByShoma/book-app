@@ -26,6 +26,13 @@ Route::get('/', function () {
 //一覧表示
 Route::get('/books', [BookController::class, 'index'])->middleware(['auth'])->name('books.index');
 
+//新規登録
+Route::get('/books/create', [BookController::class, 'create'])->middleware(['auth'])->name('books.create');
+
+//登録処理
+Route::post('/books', [BookController::class, 'store'])->middleware(['auth'])->name('books.store');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

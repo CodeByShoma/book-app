@@ -44,5 +44,21 @@ class BookSeeder extends Seeder
             'genre' => 'コミック',
         ]);
 
+        Book::create([
+            'title' => '推しの子 一巻',
+            'author' => '赤坂 アカ',
+            'memo' => '大人気のアイドル漫画',
+            'genre' => 'コミック',
+            'image_path' => 'books/oshi.jpg',
+        ]);
+
+        Book::create([
+            'title' => '僕のヒーローアカデミア 一巻',
+            'author' => '堀越 耕平',
+            'memo' => 'これはある少年がヒーローになるまでの物語',
+            'genre' => 'コミック',
+            'image_path' => 'books/hero.jpg',
+        ]);
+
     }
 }
