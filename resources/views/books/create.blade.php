@@ -20,6 +20,7 @@
                                         </ul>
                                     @endforeach
                                 @endif
+                                
                                 {{-- フォーム --}}
                                 <form method="post" action="{{ route('books.store') }}" enctype="multipart/form-data" class="flex flex-wrap -m-2 mt-10">
                                     @csrf

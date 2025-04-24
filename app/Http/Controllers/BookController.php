@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Book;
 
+use function PHPUnit\Framework\returnSelf;
+
 class BookController extends Controller
 {
 
     public function index(){
 
-        $books = Book::select('title', 'genre', 'image_path')->get(); //必要な情報だけ取得する
+        $books = Book::select('id', 'title', 'genre', 'image_path')->get(); //必要な情報だけ取得する
 
         return view('books.index', compact('books')); //ビューを表示して値を渡す
     }
@@ -50,5 +52,15 @@ class BookController extends Controller
 
         // リダイレクト
         return redirect()->route('books.index')->with('success', '登録が完了しました');
+    }
+
+    public function show(string $id){
+
+        // データを取得
+        $book = Book::findOrFail($id);
+
+        //詳細ページへ
+        return view('books.show', compact('book'));
+
     }
 }

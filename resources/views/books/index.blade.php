@@ -18,6 +18,7 @@
                                 {{ session('success') }}
                             </div>
                         @endif
+
                         <div class="container px-5 py-24 mx-auto">
                             {{-- 新規登録ボタン --}}
                             <div class="flex pl-4 mt-4 lg:w-4/5 w-full mx-auto mb-10">
@@ -29,7 +30,7 @@
                                     {{-- アイテム --}}
                                     <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
                                         {{-- 画像 --}}
-                                        <a class="block relative w-48 h-72 object-cover rounded overflow-hidden">
+                                        <a href="{{ route('books.show', $book -> id) }}" class="block relative w-48 h-72 object-cover rounded overflow-hidden">
                                             <img src="{{ $book->image_path ? asset('storage/' . $book->image_path) : asset('images/no_image.png')}}" class="object-cover object-center w-full h-full block" alt="book image" >
                                         </a>
 
