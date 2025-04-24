@@ -40,7 +40,13 @@
                                 {{-- 編集ボタン --}}
                                 <button type="submit" class=" text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">編集</button>
                                 {{-- 戻るボタン --}}
-                                <button type="button" onclick="location.href='{{ route('books.index') }}'" class=" text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">戻る</button>
+                                <button type="button" onclick="location.href='{{ route('books.index') }}'" class=" text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded">戻る</button>
+                                {{-- 削除ボタン --}}
+                                <form method="post" action="{{ route('books.destroy', ['id' => $book->id]) }}">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class=" text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">削除</button>
+                                </form>
                             </div>
                         </div>
                     </section>

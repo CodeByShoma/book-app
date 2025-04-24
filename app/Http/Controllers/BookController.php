@@ -63,4 +63,14 @@ class BookController extends Controller
         return view('books.show', compact('book'));
 
     }
+
+    public function destroy(string $id){
+        //指定されたIDのタスクを取得（なければ404）
+        $book = Book::findOrFail($id);
+
+        //取得したデータを削除
+        $book -> delete();
+
+        return redirect()->route('books.index');
+    }
 }

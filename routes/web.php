@@ -35,6 +35,11 @@ Route::post('/books', [BookController::class, 'store'])->middleware(['auth'])->n
 //詳細表示
 Route::get('/books/{id}', [BookController::class, 'show'])->middleware(['auth'])->name('books.show');
 
+//削除処理
+Route::delete('/books/{id}', [BookController::class, 'destroy'])->middleware(['auth'])->name('books.destroy');
+
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
