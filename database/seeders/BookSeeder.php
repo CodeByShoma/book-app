@@ -42,6 +42,7 @@ class BookSeeder extends Seeder
             'author' => '芥見 下々',
             'memo' => '宿儺が登場する巻',
             'genre' => 'コミック',
+            'is_read' => '1',
         ]);
 
         Book::create([
@@ -58,6 +59,15 @@ class BookSeeder extends Seeder
             'memo' => 'これはある少年がヒーローになるまでの物語',
             'genre' => 'コミック',
             'image_path' => 'books/hero.jpg',
+        ]);
+
+        Book::create([
+            'title' => '名探偵コナン',
+            'author' => '青山 剛昌',
+            'memo' => 'ホームズばりの推理力で、大活躍の高校生名探偵・工藤新一。ところがある日、事件を追っていた彼は、妙な薬の力で、なんと子供に戻ってしまった…！？仮の名を“江戸川コナン”。小さな名探偵が登場だ！！',
+            'genre' => 'コミック',
+            'image_path' => 'books/conan.jpg',
+            'is_read' => '1',
         ]);
 
     }
