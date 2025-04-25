@@ -71,6 +71,6 @@ class BookController extends Controller
         //取得したデータを削除
         $book -> delete();
 
-        return redirect()->route('books.index');
+        return redirect()->route('books.index')->with('success', '削除が完了しました');
     }
 }

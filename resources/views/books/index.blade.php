@@ -14,7 +14,12 @@
                     <section class="text-gray-600 body-font">
                         {{-- フラッシュメッセージ --}}
                         @if (session('success'))
-                            <div class="bg-blue-400 text-white p-4">
+                            @php
+                                $message = session('success');
+                                $color = Str::contains($message, '削除') ? 'red' : 'blue';
+                            @endphp
+
+                            <div class="bg-{{ $color }}-400 text-white p-4">
                                 {{ session('success') }}
                             </div>
                         @endif
