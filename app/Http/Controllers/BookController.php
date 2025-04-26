@@ -64,6 +64,51 @@ class BookController extends Controller
 
     }
 
+    public function edit(string $id){
+
+        // データを取得
+        $book = Book::findOrFail($id);
+
+        //編集ページへ
+        return view('books.edit', compact('book'));
+
+    }
+
+    public function update(Request $request, string $id){
+        // バリデーション
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'author' => ['required', 'string', 'max:255'],
+            'genre' => ['nullable', 'string', 'max:255'],
+            'memo' => ['nullable', 'string'],
+            'image' => ['nullable', 'image', 'max:2048'], //画像は最大2MB
+        ]);
+
+        //本のデータを取得
+        $book = Book::findOrFail($id);
+
+        //画像のアップロード
+        if($request->hasFile('image')){
+            $imagePath = $request->file('image')->store('books','public');
+            $book->image_path = $imagePath;
+        }
+
+        //フォームの値を更新
+        $book->title = $request->title;
+        $book->author = $request->author;
+        $book->genre = $request->genre;
+        $book->memo = $request->memo;
+        //is_readが存在していたらtrueを存在していなかったらfalseになる
+        $book->is_read = $request->has('is_read');
+
+        //保存
+        $book->save();
+
+        //トップページへリダイレクト
+        return redirect()->route('books.index')->with('success', '更新しました');
+
+    }
+
     public function destroy(string $id){
         //指定されたIDのタスクを取得（なければ404）
         $book = Book::findOrFail($id);

@@ -38,9 +38,11 @@
                             {{-- ボタン --}}
                             <div class="flex justify-end mt-5 space-x-5 lg:w-4/5 mx-auto">
                                 {{-- 編集ボタン --}}
-                                <button type="submit" class=" text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">編集</button>
+                                <button type="button" onclick="location.href='{{ route('books.edit', ['id' => $book->id]) }}'" class=" text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">編集</button>
+
                                 {{-- 戻るボタン --}}
                                 <button type="button" onclick="location.href='{{ route('books.index') }}'" class=" text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded">戻る</button>
+
                                 {{-- 削除ボタン --}}
                                 <form method="post" action="{{ route('books.destroy', ['id' => $book->id]) }}" onsubmit="return confirm('本当に削除してもよろしいですか？')">
                                     @csrf
