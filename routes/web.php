@@ -32,6 +32,9 @@ Route::get('/books/create', [BookController::class, 'create'])->middleware(['aut
 //登録処理
 Route::post('/books', [BookController::class, 'store'])->middleware(['auth'])->name('books.store');
 
+//読了一覧
+Route::get('/books/completed', [BookController::class, 'completed'])->middleware(['auth'])->name('books.completed');
+
 //編集表示
 Route::get('/books/{id}/edit', [BookController::class, 'edit'])->middleware(['auth'])->name('books.edit');
 

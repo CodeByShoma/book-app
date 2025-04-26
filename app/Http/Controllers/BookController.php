@@ -105,7 +105,7 @@ class BookController extends Controller
         $book->save();
 
         //トップページへリダイレクト
-        return redirect()->route('books.index')->with('success', '更新しました');
+        return redirect()->route('books.index')->with('success', '更新が完了しました');
 
     }
 
@@ -117,5 +117,11 @@ class BookController extends Controller
         $book -> delete();
 
         return redirect()->route('books.index')->with('success', '削除が完了しました');
+    }
+
+    public function completed(){
+        $books = Book::where('is_read', true)->get();
+
+        return view('books.completed', compact('books'));
     }
 }

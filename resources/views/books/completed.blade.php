@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            本棚
+            読了済み本棚
         </h2>
     </x-slot>
 
@@ -12,17 +12,6 @@
 
                     {{-- コンテンツ --}}
                     <section class="text-gray-600 body-font">
-                        {{-- フラッシュメッセージ --}}
-                        @if (session('success'))
-                            @php
-                                $message = session('success');
-                            @endphp
-
-                            <div class="{{ Str::contains($message, '削除') ? 'bg-red-400' : 'bg-blue-500'}} text-white p-4">
-                                {{ session('success') }}
-                            </div>
-                        @endif
-
                         <div class="container px-5 py-24 mx-auto">
                             {{-- 新規登録ボタン --}}
                             <div class="flex pl-4 mt-4 lg:w-4/5 w-full mx-auto mb-10">
